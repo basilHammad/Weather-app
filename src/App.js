@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { connect } from "react-redux";
 
-function App() {
+import "weather-icons/css/weather-icons.css";
+import "./app.css";
+import Weather from "./components/Weather";
+import Form from "./components/form/Form";
+
+const App = ({ loading }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className="App"
+      style={{
+        background: "url(/imgs/blur-background-1187974.jpg",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "50% 50%",
+        width: "100%",
+        height: "100%",
+        paddingTop: "40px",
+      }}
+    >
+      <Form />
+      <Weather />
     </div>
   );
-}
+};
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.loading,
+    isSubmited: state.isSubmited,
+  };
+};
+
+export default connect(mapStateToProps)(App);
